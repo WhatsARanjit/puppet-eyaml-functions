@@ -1,0 +1,3 @@
+fixtures:
+  symlinks:
+    eyaml_functions: "#{source_dir}"
