@@ -1,4 +1,4 @@
-#eyaml_functions
+#eyaml_functions [![Build Status](https://travis-ci.org/WhatsARanjit/puppet-eyaml-functions.svg?branch=master)](https://travis-ci.org/WhatsARanjit/puppet-eyaml-functions)
 
 ####Table of Contents
 1. [Overview](#overview)
