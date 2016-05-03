@@ -3,6 +3,7 @@
 ####Table of Contents
 1. [Overview](#overview)
 1. [Requirements](#requirements)
+1. [Setup](#setup)
 1. [Usage](#usage)
 
 ##Overview
@@ -12,8 +13,29 @@ This module provides a set of functions to describe file content from eyaml encr
 ##Requirements
 
 The functions in this module require that the [hiera-eyaml gem](https://github.com/TomPoulton/hiera-eyaml)
-is installed and configured.  The backend does not need to be in use, but the location of the public
-and private keys are read from the hiera.yaml file.
+is installed and keys generated.  The backend does not need to be in use. The location of the public
+and private keys are read from either a separate config or the hiera.yaml file.
+
+##Setup
+
+#### Non-Hiera Setup
+
+Place a file at `$environmentpath/$environment/eyaml.yaml` with the location of they keys such as:
+
+~~~
+---
+:eyaml:
+  :pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem
+  :pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem
+~~~
+
+Follow the same guidelines for key permissions listed for the [hiera-eyaml gem](https://github.com/TomPoulton/hiera-eyaml).
+
+#### Hiera Setup
+
+Follow the setup procedure for the [hiera-eyaml gem](https://github.com/TomPoulton/hiera-eyamli#hiera) Hiera configuration.
+Public and private key locations will be read from `hiera.yaml` as long as no file at `$environmentpath/$environment/eyaml.yaml`
+exists.
 
 ##Usage
 

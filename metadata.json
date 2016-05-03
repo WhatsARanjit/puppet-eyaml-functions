@@ -1,14 +1,45 @@
 {
   "name": "WhatsARanjit-eyaml_functions",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "WhatsARanjit",
   "summary": "This module provides a set of functions to describe file content from eyaml encrypted sources.",
   "license": "Apache-2.0",
   "source": "https://github.com/WhatsARanjit/puppet-eyaml-functions",
   "project_page": "https://github.com/WhatsARanjit/puppet-eyaml-functions",
   "issues_url": "https://github.com/WhatsARanjit/puppet-eyaml-functions/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "10.04",
+        "12.04"
+      ]
+    }
+  ],
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ],
   "data_provider": null
 }
