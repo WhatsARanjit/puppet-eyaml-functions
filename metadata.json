@@ -7,6 +7,7 @@
   "source": "https://github.com/WhatsARanjit/puppet-eyaml-functions",
   "project_page": "https://github.com/WhatsARanjit/puppet-eyaml-functions",
   "issues_url": "https://github.com/WhatsARanjit/puppet-eyaml-functions/issues",
+  "tags": ["eyaml", "hiera-eyaml", "secrets", "encryption"],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
