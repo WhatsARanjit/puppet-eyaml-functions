@@ -6,7 +6,7 @@ module Puppet::Parser::Functions
   ) do |args|
 
     require 'puppet/util/eyaml_functions'
-    lookup = Puppet::Util::Eyaml_functions.new(args[0], :file)
+    lookup = Puppet::Util::Eyaml_functions.new(function_file([args[0]]))
     lookup.do_decrypt
 
   end
