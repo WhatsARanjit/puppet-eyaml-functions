@@ -7,7 +7,7 @@ module Puppet::Util
       require 'hiera/backend/eyaml/subcommands/decrypt'
       Trollop::options
     rescue LoadError => e
-      raise 'The hiera-eyaml gem is not installed'
+      raise Puppet::ParseError, 'The hiera-eyaml gem is not installed'
     end
 
     def initialize(
@@ -38,7 +38,7 @@ module Puppet::Util
       begin
         config = YAML::load_file(file)
       rescue Exception => e
-        raise "Unable to load #{file}"
+        raise Puppet::ParseError, "Unable to load #{file}"
       else
         config[:eyaml]
       end
