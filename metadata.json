@@ -1,6 +1,6 @@
 {
   "name": "WhatsARanjit-eyaml_functions",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "WhatsARanjit",
   "summary": "This module provides a set of functions to describe file content from eyaml encrypted sources.",
   "license": "Apache-2.0",

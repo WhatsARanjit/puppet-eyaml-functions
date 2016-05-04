@@ -60,6 +60,10 @@ Converts an eyaml encrypted file to plain-text.
 # Assume /tmp/test.txt contains only the string in the above example
 eyaml_file('/tmp/test.txt')
 # return: "hello"
+
+# Assume $modulepath/foo/files/test.txt contains only the string in the above example
+eyaml_file('foo/test.txt')
+# return: "hello"
 ~~~
 
 *Type*: rvalue.
