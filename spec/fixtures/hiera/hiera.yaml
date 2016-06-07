@@ -2,3 +2,6 @@
 :eyaml:
   :pkcs7_private_key: spec/fixtures/keys/private_key.pkcs7.pem
   :pkcs7_public_key: spec/fixtures/keys/public_key.pkcs7.pem
+  other:
+    :pkcs7_private_key: spec/fixtures/keys/private_key.pkcs7_other.pem
+    :pkcs7_public_key: spec/fixtures/keys/public_key.pkcs7_other.pem

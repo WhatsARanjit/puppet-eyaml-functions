@@ -12,10 +12,10 @@ module Puppet::Util
 
     def initialize(
       lookup,
-      type = :string
+      group = false
     )
       @lookup = lookup
-      @type   = type.to_sym
+      @group  = group
 
       # Use separate eyaml config if exists, or else hiera.yaml
       non_hiera_config = "#{Puppet.settings[:environmentpath]}/#{Puppet.settings[:environment]}/eyaml.yaml"
@@ -24,11 +24,29 @@ module Puppet::Util
       @config          = load_config(config_file)
     end
 
+    def get_public_key
+      begin
+        ret = @config[@group][:pkcs7_public_key]
+      rescue NoMethodError => e
+       ret = @config[:pkcs7_public_key]
+      end
+      ret
+    end
+
+    def get_private_key
+      begin
+        ret = @config[@group][:pkcs7_private_key]
+      rescue NoMethodError => e
+       ret = @config[:pkcs7_private_key]
+      end
+      ret
+    end
+
     def do_decrypt
       Hiera::Backend::Eyaml::Options[:input_data] =
         Hiera::Backend::Eyaml::Subcommands::Decrypt.validate(setup_options)[:input_data]
-      Hiera::Backend::Eyaml::Options['pkcs7_public_key']  = @config[:pkcs7_public_key]
-      Hiera::Backend::Eyaml::Options['pkcs7_private_key'] = @config[:pkcs7_private_key]
+      Hiera::Backend::Eyaml::Options['pkcs7_public_key']  = get_public_key
+      Hiera::Backend::Eyaml::Options['pkcs7_private_key'] = get_private_key
       Hiera::Backend::Eyaml::Subcommands::Decrypt.execute
     end
 
@@ -45,7 +63,7 @@ module Puppet::Util
     end
 
     def setup_options
-      { @type => @lookup, }
+      { :string => @lookup, }
     end
 
   end

@@ -27,6 +27,10 @@ Place a file at `$environmentpath/$environment/eyaml.yaml` with the location of 
 :eyaml:
   :pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem
   :pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem
+  #Optional
+  other:
+    :pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7_other.pem
+    :pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7_other.pem
 ~~~
 
 Follow the same guidelines for key permissions listed for the [hiera-eyaml gem](https://github.com/TomPoulton/hiera-eyaml).
@@ -47,6 +51,10 @@ Converts an eyaml encrypted string to plain-text.
 ~~~
 eyaml_string('ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEA0G2Cl2yCPlMsXkj3KOzMYO+kyXdSIoVad533Gr1FQaU7VqpM+rbt7CYM5WytFNYotsYyqxoSW3pGKKGxHL9f0c4q+xGZHV1GaHoR4rCnTps6fpyWVENkQJPZoEKi/fHSN2y+TryCf7Bt+3WRumkspZtUiZ0sG5G0kC80ssrDbbm2mSxwcZ1AvfEozcrCtCHJr3qxmFMEkHvhpW/roumuyhlgwhre6tkE7gqyntFrAR5Hzlt0Mk83Fg345qyKh/aq3iAv412/GgbKhFlHtMDcfW2y5ntZozuyvG7W73HQ64snRNR9JLUzZuhm0o/YQfUYFoSQIQIdi/TxCXb6nIZ46DA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD5w0KZx5jxul3GUbSUXpvDgBCO/6XLdwlHb16bagi0igXf]')
 # return: "hello"
+
+# Using another key pair
+eyaml_string('ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEA0G2Cl2yCPlMsXkj3KOzMYO+kyXdSIoVad533Gr1FQaU7VqpM+rbt7CYM5WytFNYotsYyqxoSW3pGKKGxHL9f0c4q+xGZHV1GaHoR4rCnTps6fpyWVENkQJPZoEKi/fHSN2y+TryCf7Bt+3WRumkspZtUiZ0sG5G0kC80ssrDbbm2mSxwcZ1AvfEozcrCtCHJr3qxmFMEkHvhpW/roumuyhlgwhre6tkE7gqyntFrAR5Hzlt0Mk83Fg345qyKh/aq3iAv412/GgbKhFlHtMDcfW2y5ntZozuyvG7W73HQ64snRNR9JLUzZuhm0o/YQfUYFoSQIQIdi/TxCXb6nIZ46DA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD5w0KZx5jxul3GUbSUXpvDgBCO/6XLdwlHb16bagi0igXf]', 'other')
+# return: "hello"
 ~~~
 
 *Type*: rvalue.
@@ -64,6 +72,13 @@ eyaml_file('/tmp/test.txt')
 # Assume $modulepath/foo/files/test.txt contains only the string in the above example
 eyaml_file('foo/test.txt')
 # return: "hello"
+
+# Using another key pair
+eyaml_file('/tmp/test.txt', 'other')
+# return: "hello"
 ~~~
 
 *Type*: rvalue.
+
+#### Notes
+If an alternate key pair is not given or the string given cannot be found, the default key bill be used.
