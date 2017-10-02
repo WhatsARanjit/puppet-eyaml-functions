@@ -1,26 +1,26 @@
-#eyaml_functions [![Build Status](https://travis-ci.org/WhatsARanjit/puppet-eyaml-functions.svg?branch=master)](https://travis-ci.org/WhatsARanjit/puppet-eyaml-functions)
+# eyaml_functions [![Build Status](https://travis-ci.org/WhatsARanjit/puppet-eyaml-functions.svg?branch=master)](https://travis-ci.org/WhatsARanjit/puppet-eyaml-functions)
 
-####Table of Contents
+#### Table of Contents
 1. [Overview](#overview)
 1. [Requirements](#requirements)
 1. [Setup](#setup)
 1. [Usage](#usage)
 
-##Overview
+## Overview
 
 This module provides a set of functions to describe file content from eyaml encrypted sources.
 
-##Requirements
+## Requirements
 
 The functions in this module require that the [hiera-eyaml gem](https://github.com/TomPoulton/hiera-eyaml)
 is installed and keys generated.  The backend does not need to be in use. The location of the public
 and private keys are read from either a separate config or the hiera.yaml file.
 
-##Setup
+## Setup
 
 #### Non-Hiera Setup
 
-Place a file at `$environmentpath/$environment/eyaml.yaml` with the location of they keys such as:
+Place a file at `$environmentpath/$environment/eyaml.yaml` with the location of the keys such as:
 
 ~~~
 ---
@@ -41,7 +41,7 @@ Follow the setup procedure for the [hiera-eyaml gem](https://github.com/TomPoult
 Public and private key locations will be read from `hiera.yaml` as long as no file at `$environmentpath/$environment/eyaml.yaml`
 exists.
 
-##Usage
+## Usage
 
 #### `eyaml_string`
 
@@ -81,4 +81,4 @@ eyaml_file('/tmp/test.txt', 'other')
 *Type*: rvalue.
 
 #### Notes
-If an alternate key pair is not given or the string given cannot be found, the default key bill be used.
+If an alternate key pair is not given or the string given cannot be found, the default key will be used.
